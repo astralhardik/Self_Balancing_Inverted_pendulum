@@ -11,18 +11,32 @@ The system is powered by an **Arduino**, an **MPU6050** IMU, and a **TB6612FNG**
 * **Real-time Tuning:** PID constants ($K_p, K_i, K_d$) can be adjusted instantly via the Serial Monitor without re-uploading code.
 * **Safety:** Includes deadband control and motor output constraining.
 
-## Hardware Pinout
-Based on the firmware configuration:
-
-| Component | Pin Name | Arduino Pin | Description |
-| :--- | :--- | :--- | :--- |
-| **TB6612FNG** | PWMB | **D5** | PWM Speed Control |
-| | BIN1 | **D3** | Direction Input 1 |
-| | BIN2 | **D8** | Direction Input 2 |
-| **MPU6050** | SDA | **A4** (Uno) | I2C Data |
-| | SCL | **A5** (Uno) | I2C Clock |
-| | VCC | 5V/3.3V | Power |
-| | GND | GND | Ground |
+## Hardware Connection
+### Wiring Diagram
+```text
+       BATTERY PACK (7.4V - 11.1V)
+           +      -
+           |      |
+           |      +------------------------------------------+
+           |                                                 |
+           +-----------------------+                         |
+                                   |                         |
++---------------------+   +--------|-------------------------|-------+
+|   ARDUINO UNO/NANO  |   |        VM       GND              GND     |
+|                     |   |                                          |
+|              5V_OUT |-->| VCC (Logic)      TB6612FNG DRIVER        |
+|                 GND |---| GND                                      |
+|                     |   |                                          |
+| [MOTOR CONTROL]     |   | [CHANNEL B]                              |
+|                  D5 |-->| PWMB                                     |
+|                  D3 |-->| BIN1                                BO1  |===> MOTOR
+|                  D8 |-->| BIN2                                BO2  |===> (Reaction Wheel)
+|                     |   |                                          |
+| [SENSORS/ALERTS]    |   | ** STBY -> Connect to 5V ** |
+|                  A4 |-->| SDA (MPU6050)                            |
+|                  A5 |-->| SCL (MPU6050)                            |
+|                 D12 |-->| BUZZER (+)                               |
++---------------------+   +------------------------------------------+
 
 > **Note:** The code uses Channel B of the motor driver. Ensure your motor is connected to BO1/BO2.
 
