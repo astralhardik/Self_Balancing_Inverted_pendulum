@@ -37,7 +37,7 @@ The system is powered by an **Arduino**, an **MPU6050** IMU, and a **TB6612FNG**
 |                  A5 |-->| SCL (MPU6050)                            |
 |                 D12 |-->| BUZZER (+)                               |
 +---------------------+   +------------------------------------------+
-
+text```
 > **Note:** The code uses Channel B of the motor driver. Ensure your motor is connected to BO1/BO2.
 
 ## How to Tune (Serial Commands)
