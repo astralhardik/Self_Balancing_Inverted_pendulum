@@ -10,7 +10,7 @@ The system is powered by an **Arduino**, an **MPU6050** IMU, and a **TB6612FNG**
 * **PID Control:** Implements a Proportional-Integral-Derivative controller with **Integral Anti-Windup** to prevent saturation.
 * **Real-time Tuning:** PID constants ($K_p, K_i, K_d$) can be adjusted instantly via the Serial Monitor without re-uploading code.
 * **Safety:** Includes deadband control and motor output constraining.
-
+```
 ## Hardware Connection
 ### Wiring Diagram
 
@@ -39,7 +39,7 @@ The system is powered by an **Arduino**, an **MPU6050** IMU, and a **TB6612FNG**
 +---------------------+   +------------------------------------------+
 
 > **Note:** The code uses Channel B of the motor driver. Ensure your motor is connected to BO1/BO2.
-
+```
 ## How to Tune (Serial Commands)
 This robot allows you to tune the stability while it is running. Open the **Arduino Serial Monitor** (Baud Rate: **115200**) and type the following commands:
 
